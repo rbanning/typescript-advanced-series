@@ -1,5 +1,6 @@
-import './style.css'
-import hallpassLogo from '/hallpass.png'
+import '../style.css'
+import hallpassLogo from '../assets/hallpass.png';
+import viteLogo from '../assets/vite.svg';
 import { setupCounter } from './counter.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
@@ -14,6 +15,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <p class="read-the-docs">
       Getting Started
     </p>
+    <footer>
+      <img src="${viteLogo}" class="logo mini vanilla" alt="Vite logo" />
+      <a href="https://vitejs.dev" target="_blank">Powered by Vite</a>
   </div>
 `
 
