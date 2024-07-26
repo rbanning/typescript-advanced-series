@@ -1,10 +1,14 @@
 {
   "name": "typescript-advanced-series",
+  "description": "Learning Advanced Typescript using a project-base approach",
+  "license": "CC-BY-NC-SA-4.0",
+  "author": "Robert Banning",
+  "funding": "https://buymeacoffee.com/hallpassandfriends",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
