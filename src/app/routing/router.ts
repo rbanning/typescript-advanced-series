@@ -1,5 +1,14 @@
+import { fadeIn, fadeOut } from "../utils";
 import { NotFoundView } from "../views";
 import { routes } from "./routes";
+
+const DELAY = 200; //ms - transition between views
+
+function parsePathname(path: string) {
+  //hack: need to remove the site "folder" from path.
+  const baseFolder = "/typescript-advanced-series";
+  return path.startsWith(baseFolder) ? path.replace(baseFolder, '') : path;
+}
 
 function findAnchorElement(target: HTMLElement | null | undefined) {
   if (target) {
@@ -17,12 +26,15 @@ function findAnchorElement(target: HTMLElement | null | undefined) {
   return null;
 }
 
-function loadView(path?: string | null) {
+async function loadView(path?: string | null) {
   const root = document.getElementById('root');
   if (root) {
-    path ??= window.location.pathname;
+    path = parsePathname(path ?? window.location.pathname);
     const view = routes.find(r => r.path === path);
-    root.innerHTML = view ? view.handler(view) : NotFoundView({path});
+    const html = view ? view.handler(view) : NotFoundView({path});
+    await fadeOut(root, DELAY);
+    root.innerHTML = html;
+    await fadeIn(root, DELAY);
   } else {
     console.error(`Could not load the requested view: unable to find the #root element`);
   }
