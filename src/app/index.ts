@@ -1,11 +1,13 @@
 import '../style.css'
-import { footer, header } from './components'
+import { Container, Footer, Header } from './components'
 
 import { activateRouter } from './routing/router.ts';
 activateRouter();
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  ${header()}
-  <main id="root"></main>
-  ${footer()}
+  ${Header()}
+  ${Container(`
+    <main id="root"></main>
+  `)}
+  ${Footer()}
 `

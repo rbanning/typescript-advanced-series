@@ -1,14 +1,14 @@
 import styles from  './header.module.css';
 
-import academyLogo from '../../assets/academy-logo.svg';
+import academyLogo from '../../../assets/academy-logo.svg';
 
-export function header() {
+export function Header() {
   return `
     <header class="${styles.primary}">
       <a href="/">
         <img src="${academyLogo}" class="logo ${styles.logo}" alt="Hallpass Academy logo" />
       </a>
-      <h1>Advanced Typescript Series</h1>
+      <div class="${styles.brand}">Advanced Typescript Series</div>
       <nav>
         <a href="/">Home</a>
         <a href="/about">About</a>
