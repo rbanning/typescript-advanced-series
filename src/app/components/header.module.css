@@ -1,0 +1,41 @@
+header.primary {
+  display: flex;
+  flex-direction: column;
+  gap: 0;  
+
+  h1 { margin: 0 0 0.5rem 0; }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    a {
+      font-size: 1.2rem;
+      color: rgba(182, 218, 241, 0.8);
+      border-bottom: solid 2px transparent;
+      transition: all 200ms ease-in-out;
+      &:hover {
+        color: rgba(182, 218, 241, 1);
+        border-bottom-color: rgba(182, 218, 241, 0.5);
+      }
+    }
+  }
+
+  .logo { padding: 0; height: 6rem; }
+}
+
+
+@media (prefers-color-scheme: light) {
+  header.primary {
+    nav a {
+      color: rgba(6, 61, 95, 0.8);
+      border-bottom: solid 2px transparent;
+      transition: all 200ms ease-in-out;
+      &:hover {
+        color: rgba(6, 61, 95, 1);
+        border-bottom-color: rgba(6, 61, 95, 0.5);
+      }
+    }
+  }
+}

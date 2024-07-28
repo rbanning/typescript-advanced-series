@@ -1,0 +1,31 @@
+footer.primary {
+  margin: 4rem 0 0 0;
+  padding: 2rem 0;
+  
+  font-size: 0.8rem;
+  
+  background-color: #17436d;
+  color:rgba(161, 199, 221, 0.87);
+  a {
+    color:rgb(179, 211, 229);
+    border-bottom: solid 1px #2972b6;
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;  
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  footer.primary {
+    background-color: #d5e1ec;
+    color:rgba(42, 81, 104, 0.87);
+    a {
+      color:rgba(42, 81, 104, 1);
+      border-bottom: solid 1px #b8ccdf;
+    }
+  }  
+}

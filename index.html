@@ -17,5 +17,10 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/app/index.ts"></script>
+
+    <script>
+      var a = "This is a global variable";
+      console.log(">>> debug", {a, "window_a": window.a});
+    </script>
   </body>
 </html>
