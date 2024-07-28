@@ -1,6 +1,6 @@
 import { unsplashRepo } from './unsplash-repo';
 
-export function unsplashImage(
+export function UnsplashImage(
   target: HTMLElement,
   src: string
 ) {

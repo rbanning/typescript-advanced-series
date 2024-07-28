@@ -3,11 +3,12 @@ import { NotFoundView } from "../views";
 import { routes } from "./routes";
 
 const DELAY = 200; //ms - transition between views
+const BASE_PATH = "/typescript-advanced-series";
 
 function parsePathname(path: string) {
   //hack: need to remove the site "folder" from path.
-  const baseFolder = "/typescript-advanced-series";
-  return path.startsWith(baseFolder) ? path.replace(baseFolder, '') : path;
+  console.log(">>> parsePathname path", path);
+  return path.startsWith(BASE_PATH) ? path.replace(BASE_PATH, '') : path;
 }
 
 function findAnchorElement(target: HTMLElement | null | undefined) {
@@ -58,6 +59,9 @@ export function activateRouter(initialPath?: string) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
+
+  console.log(">>> check path", {path: target.pathname, href: target.href});
+
       loadView(target.pathname)
       return false;
     }
