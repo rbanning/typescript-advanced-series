@@ -25,6 +25,13 @@ function findAnchorElement(target: HTMLElement | null | undefined) {
   //else (not found)
   return null;
 }
+function isLocal(target: HTMLAnchorElement | null | undefined): target is HTMLAnchorElement {
+  if (target) {
+    return target.href.startsWith(window.location.origin);
+  }
+  //else
+  return false;
+}
 
 async function loadView(path?: string | null) {
   const root = document.getElementById('root');
@@ -63,14 +70,18 @@ export function activateRouter(initialPath?: string) {
   
   document.body.addEventListener('click', (e) => {
     const target = findAnchorElement(e.target as HTMLElement);
-    if (target) {
+      //only proceed if target is valid and its href is in this site
+    if (isLocal(target)) {            
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
 
-      loadView(target.pathname);      
-      resetActivatedAnchorTags(target.href);
-      history.pushState({}, "routing", target.href);
+      if (target.href !== window.location.href) {
+        loadView(target.pathname);      
+        resetActivatedAnchorTags(target.href);
+        history.pushState({}, "routing", target.href);
+      }
+
 
       return false;
     }
