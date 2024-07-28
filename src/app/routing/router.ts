@@ -7,7 +7,6 @@ const BASE_PATH = "/typescript-advanced-series";
 
 function parsePathname(path: string) {
   //hack: need to remove the site "folder" from path.
-  console.log(">>> parsePathname path", path);
   return path.startsWith(BASE_PATH) ? path.replace(BASE_PATH, '') : path;
 }
 
@@ -41,16 +40,25 @@ async function loadView(path?: string | null) {
   }
 }
 
+function resetActivatedAnchorTags(href?: string) {
+  href ??= window.location.href;
+  Array.from(document.querySelectorAll('a'))
+    .forEach(link => {
+      link.classList.toggle('active', link.href === href);
+    })
+}
+
 export function activateRouter(initialPath?: string) {
-  window.addEventListener('popstate', (e) => {
-    e.preventDefault();
-    console.log(">>> popstate", e);
-    return false;
+  window.addEventListener('popstate', (_) => {
+    //back in browser history
+    loadView();
+    resetActivatedAnchorTags();
   });
 
-  document.addEventListener('DOMContentLoaded', (e) => {
-    console.log(">>> DOMContentLoaded", {e, state: document.readyState, x: window});
+  document.addEventListener('DOMContentLoaded', (_) => {
+    //load the initial view based on url (or as determined by the activatedRouter param)
     loadView(initialPath);
+    resetActivatedAnchorTags();
   })
   
   document.body.addEventListener('click', (e) => {
@@ -60,9 +68,10 @@ export function activateRouter(initialPath?: string) {
       e.stopPropagation();
       e.stopImmediatePropagation();
 
-  console.log(">>> check path", {path: target.pathname, href: target.href});
+      loadView(target.pathname);      
+      resetActivatedAnchorTags(target.href);
+      history.pushState({}, "routing", target.href);
 
-      loadView(target.pathname)
       return false;
     }
     //else ignore

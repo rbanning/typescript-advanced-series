@@ -10,9 +10,9 @@ export function Header() {
       </a>
       <div class="${styles.brand}">Advanced Typescript Series</div>
       <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact A</a>
+        <a href="./">Home</a>
+        <a href="./about">About</a>
+        <a href="./contact">Contact</a>
       </nav>
     </header>
   `
