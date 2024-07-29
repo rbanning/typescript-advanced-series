@@ -20,7 +20,7 @@ function UnsplashImageCredit(photo: IUnsplash): HTMLElement {
 
 
 export class UnsplashImage extends HTMLElement {
-  private width: number = 500;
+  private width: Nullable<number>;
   private key: Nullable<string>;
 
   static observedAttributes = ["size", "key"]
@@ -73,7 +73,11 @@ export class UnsplashImage extends HTMLElement {
       inner.appendChild(image);
       inner.appendChild(UnsplashImageCredit(unsplash));
 
-      image.width = this.width;
+      if (this.width) {
+        image.width = this.width;
+      } else {
+        wrapper.classList.add(styles.full);
+      }
 
       image.onload = () => {
         //success - append to target

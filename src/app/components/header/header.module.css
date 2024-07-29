@@ -9,8 +9,10 @@ header.primary {
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    margin-top: 0.5rem;
+
     a {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       color: rgba(182, 218, 241, 0.8);
       border-bottom: solid 2px transparent;
       transition: all 200ms ease-in-out;
@@ -21,7 +23,7 @@ header.primary {
     }
   }
   
-  .brand { margin: -2rem 0 0.25rem 0; font-weight: bold; font-size: 3rem; }
+  .brand { margin: -2rem 0 0.25rem 0; font-weight: bold; font-size: 3rem; line-height: 1; text-align: center; }
   .logo { padding: 0; height: 4rem; }
 }
 

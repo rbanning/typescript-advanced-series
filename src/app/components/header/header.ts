@@ -11,8 +11,8 @@ export function Header() {
       <div class="${styles.brand}">Advanced Typescript Series</div>
       <nav>
         <a href="./">Home</a>
+        <a href="./series">Series</a>
         <a href="./about">About</a>
-        <a href="./contact">Contact</a>
       </nav>
     </header>
   `

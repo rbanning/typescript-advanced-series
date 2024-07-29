@@ -1,4 +1,4 @@
-import { AboutView, ContactView, HomeView } from "../views";
+import { AboutView, ContactView, HomeView, SeriesView } from "../views";
 import { IRoute } from "./route.model";
 
 export const routes: IRoute[] = [
@@ -13,5 +13,9 @@ export const routes: IRoute[] = [
   {
     path: '/contact',
     handler: ContactView
+  },
+  {
+    path: '/series',
+    handler: SeriesView
   },
 ] as const;
