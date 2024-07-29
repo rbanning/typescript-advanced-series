@@ -1,0 +1,12 @@
+.test {
+  display: block;
+  padding: 1rem;
+  background: pink;
+  color: maroon;
+  border-radius: 1rem;
+
+  .span {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+}

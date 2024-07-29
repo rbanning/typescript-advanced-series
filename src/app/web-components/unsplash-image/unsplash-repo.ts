@@ -1,8 +1,8 @@
 import { IUnsplash } from "./unsplash.type";
 
-import oxfordDoorFront from '../../../../assets/unsplash/oxford-door-front.jpg';
-import studentReadingBook from '../../../../assets/unsplash/student-reading-book.jpg';
-import oxfordBicyclesParked from '../../../../assets/unsplash/oxford-bicycles-parked.jpg';
+import oxfordDoorFront from '../../../assets/unsplash/oxford-door-front.jpg';
+import studentReadingBook from '../../../assets/unsplash/student-reading-book.jpg';
+import oxfordBicyclesParked from '../../../assets/unsplash/oxford-bicycles-parked.jpg';
 
 export const unsplashRepo: IUnsplash[] = [
   {
