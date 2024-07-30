@@ -23,7 +23,7 @@ export const advisorConfig: ISeriesConfig = {
     you may contact me -- except if you need money, are in trouble with the law,
     or are going through some serious shit.
     <br/>
-    <a href="./dr-${getAdvisor().id}">Dr. ${getAdvisor().name}'s Profile Page</a>
+    <a href="${getAdvisor().href}">Dr. ${getAdvisor().name}'s Profile Page</a>
     </p>
     <p>
       Today, we are going on a walking trip of the campus and the surrounding area.

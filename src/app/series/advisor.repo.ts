@@ -1,15 +1,20 @@
+import { slugify } from "../utils";
 
 
-export interface IAdvisor {
+export interface IAdvisorBase {
   id: string;
   name: string;
   dept: string;
   passion: string;
-  profile: string;
+  profile: string;  
+}
+
+export interface IAdvisor extends IAdvisorBase {
+  href: string;
 }
 
 
-export const advisorRepo: IAdvisor[] = [
+const _repo: IAdvisorBase[] = [
   { 
     id: 'duru',
     name: 'Duru',
@@ -19,6 +24,17 @@ export const advisorRepo: IAdvisor[] = [
       <p>
       Dr. Duru is a distinguished Data Science professor renowned for his groundbreaking research in machine learning and big data analytics. When he's not in the classroom or the lab, Duru can be found riding the waves of Teahupo'o as a professional surfer, skillfully balancing his dual passions for academia and the ocean. His unique blend of analytical precision and adventurous spirit inspires both his students and peers, making him a dynamic and influential figure in both the classroom and the lineup.
       </p>
+    `
+  },
+  {
+    id: 'makatisi',
+    name: 'Makatisi',
+    dept: 'Modern Literature',
+    passion: 'long distance running',
+    profile: `
+    <p>
+    Dr. Makatisi is a distinguished modern literature professor known for her non-orthodox teaching methods that blend literary analysis with the discipline of long-distance running. With a passion for exploring the parallels between the endurance required in both literature and athletics, she inspires her students to find deeper connections and insights through active engagement. Makatisi's unique approach not only enriches her students' understanding of modern literature but also promotes a holistic lifestyle that values both words and the runner's high.
+    </p>
     `
   },
   {
@@ -42,5 +58,13 @@ export const advisorRepo: IAdvisor[] = [
     Dr. Woojin is a renowned Marine Biology professor known for his innovative approach to education that uniquely combines the study of marine ecosystems with the precision and discipline of archery. With a passion for both the underwater world and the art of the bow, Dr. Woojin inspires students to develop a keen eye for detail and a deep appreciation for the natural world. His interdisciplinary methods hit the mark, instilling students with the skills of focus, patience, and Robinhood.
     </p>
     `
-  }
+  },
 ];
+
+
+export const advisorRepo: IAdvisor[] = _repo.map(m => {
+  return {
+    ...m,
+    href: './' + slugify(`Advisor Dr ${m.name}`)
+  }
+});

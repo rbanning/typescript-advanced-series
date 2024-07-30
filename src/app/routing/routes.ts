@@ -1,5 +1,6 @@
 import { seriesConfigList } from "../series";
-import { AboutView, ContactView, HomeView, SeriesItemView, SeriesView } from "../views";
+import { advisorRepo } from "../series/advisor.repo";
+import { AboutView, AdvisorView, ContactView, HomeView, SeriesItemView, SeriesView } from "../views";
 import { IRoute } from "./route.model";
 
 export const routes: IRoute[] = [
@@ -24,5 +25,11 @@ export const routes: IRoute[] = [
       path: c.href.startsWith('.') ? c.href.substring(1) : c.href,  //convert to path
       handler: SeriesItemView(c)
     }
-  })
+  }),
+  ...advisorRepo.map(c => {
+    return {
+      path: c.href.startsWith('.') ? c.href.substring(1) : c.href,  //convert to path
+      handler: AdvisorView(c)
+    }
+  }),
 ] as const;

@@ -4,3 +4,4 @@ export * from './about';
 export * from './contact';
 export * from './series';
 export * from './series-item';
+export * from './advisor';
