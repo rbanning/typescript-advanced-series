@@ -1,6 +1,18 @@
 :root {
-  --dark-bg-color: #202429;
-  --light-bg-color: #f7f9fc;
+  /* variables for dark (default) scheme */
+  --dark--bg-color: #202429;
+  --dark--text-color: #f7f9fc;
+  --dark--text-color-accent: #fac17f;
+  --dark--link-color: #8388f8;
+  --dark--link-color-accent: #d783f8;
+  
+  /* variables for light scheme */
+  --light--bg-color: #f7f9fc;
+  --light--text-color: #202429;
+  --light--text-color-accent: #e08924;
+  --light--link-color: #6165b6;
+  --light--link-color-accent: #995faf;
+
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -8,8 +20,8 @@
   font-size: 16px;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: var(--dark-bg-color);
+  color: var(--dark--text-color);
+  background-color: var(--dark--bg-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,14 +39,16 @@ main {
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--dark--link-color);
   text-decoration: inherit;
-  &.active { font-weight: bold;}
+  transition: color 300ms ease-in-out;
+  &.active { 
+    font-weight: bold;
+  }
+  &:hover, &.active {
+    color: var(--dark--link-color-accent);
+  }
 }
-a:hover {
-  color: #535bf2;
-}
-
 
 h1, h2 { 
   font-family: Georgia, 'Times New Roman', Times, serif;  
@@ -45,18 +59,33 @@ h1, h2 {
   }
 }
 h1 {
-  font-size: 3.2em;
+  font-size: 3.2rem;
   font-weight: 300;
   text-align: center;
 }
 h2 {
-  font-size: 2.6em;
+  font-size: 2.6rem;
   letter-spacing: -2px; 
+}
+h3 {
+  font-size: 1.4rem;
+  letter-spacing: -1px;
+  text-transform: uppercase; 
+  color: var(--dark--text-color-accent);
+  margin: 0;
+  &.with-space {
+    margin: 1.5rem 0;
+  }
 }
 
 .hero {
   width: 100%; height: 20vh; overflow: hidden;
 }
+
+.accent {
+  color: var(--dark--text-color-accent);
+}
+
 
 .logo {
   height: 6em;
@@ -108,16 +137,32 @@ nav {
   gap: 2rem;
 }
 
+.intro {
+  font-weight: 400;
+  font-size: 1.2rem;  
+}
+
 /* LIGHT */
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: var(--light-bg-color);
+    color: var(--light--text-color);
+    background-color: var(--light--bg-color);
   }
-  a:hover {
-    color: #747bff;
+  h3 {
+    color: var(--light--text-color-accent);
   }
+  a {
+    color: var(--light--link-color);
+    &:hover, &.active {
+      color: var(--light--link-color-accent);
+    }
+  }
+  
+  .accent {
+    color: var(--light--text-color-accent);
+  }
+  
   button {
     background-color: #f9f9f9;
   }

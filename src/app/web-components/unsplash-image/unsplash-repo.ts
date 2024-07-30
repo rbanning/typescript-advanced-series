@@ -5,6 +5,10 @@ import studentReadingBook from '../../../assets/unsplash/student-reading-book.jp
 import oxfordBicyclesParked from '../../../assets/unsplash/oxford-bicycles-parked.jpg';
 import purpleYarn from '../../../assets/unsplash/purple-yarn.jpg';
 
+import seriesWelcome from '../../../assets/unsplash/series/00-welcome.jpg';
+import seriesOnboarding from '../../../assets/unsplash/series/01-onboarding.jpg';
+import seriesAdvisor from '../../../assets/unsplash/series/02-advisor.jpg';
+
 export const unsplashRepo: IUnsplash[] = [
   {
     id: "oxford-door-front",
@@ -64,8 +68,54 @@ export const unsplashRepo: IUnsplash[] = [
     },
     tags: []
   },
+
   {
-    /* cspell: disable-next-line */
+    id: "welcome",
+    src: seriesWelcome,
+    description: "'Welcome' in a variety of languages",
+    credit: {
+      url: "https://unsplash.com/photos/a-group-of-wooden-signs-hanging-from-a-metal-gate-9bivU7sTcmo",
+      photographer: {
+        /* cspell: disable-next-line */
+        name: "Dana Light",
+        portfolio: "https://unsplash.com/@dreamcatchlight",
+      },
+    },
+    tags: []
+  },
+
+  {
+    id: "onboarding",
+    src: seriesOnboarding,
+    description: "Ben getting on board on the first train to Kandy",
+    credit: {
+      url: "https://unsplash.com/photos/woman-in-black-top-and-gray-pants-holding-on-blue-train-LHtFRAsNWSc?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash",
+      photographer: {
+        /* cspell: disable-next-line */
+        name: "Etienne Boulanger",
+        portfolio: "https://unsplash.com/@etienneblg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash",
+      },
+    },
+    tags: []
+  },
+
+
+  {
+    id: "advisor",
+    src: seriesAdvisor,
+    description: "racoon in a swamp forest",
+    credit: {
+      url: "https://unsplash.com/photos/a-raccoon-standing-on-a-wooden-platform-next-to-a-tree-AM-BoEyHFy8?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash",
+      photographer: {
+        /* cspell: disable-next-line */
+        name: "",
+        portfolio: "https://unsplash.com/@leob_photography?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash",
+      },
+    },
+    tags: []
+  },
+
+  {
     id: "",
     src: "",
     description: "",
@@ -73,14 +123,14 @@ export const unsplashRepo: IUnsplash[] = [
       url: "https://unsplash.com/",
       photographer: {
         /* cspell: disable-next-line */
-        name: "",
+        name: "Leo Bayard",
         portfolio: "https://unsplash.com/@",
       },
     },
     tags: []
   },
+
   {
-    /* cspell: disable-next-line */
     id: "",
     src: "",
     description: "",

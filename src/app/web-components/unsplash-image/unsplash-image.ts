@@ -42,14 +42,18 @@ export class UnsplashImage extends HTMLElement {
         requireRefresh = requireRefresh && this.key !== oldValue;
         break;
       case "size":
-          const _size = parseInt(newValue ?? '');
-          if (!isNaN(_size)) {
-            requireRefresh = requireRefresh && this.width !== _size;
-            this.width = _size;
-          }
-          break;
+        const _size = parseInt(newValue ?? '');
+        if (!isNaN(_size)) {
+          requireRefresh = requireRefresh && this.width !== _size;
+          this.width = _size;
+        } else {
+          requireRefresh = false;
+        }
+        break;
       default: 
           console.warn(`${UnsplashImage.TAG} - unsupported attribute: ${name}`);
+          requireRefresh = false;
+          break;
     }
 
     if (requireRefresh) {

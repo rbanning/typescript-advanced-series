@@ -7,3 +7,8 @@ export interface ISeriesConfig {
   subtitle: string;
   introduction: string;
 }
+
+export interface ISeriesConfigExtended extends ISeriesConfig {
+  ordinalStr: string;
+  href: string;  
+}

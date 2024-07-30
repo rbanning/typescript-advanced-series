@@ -7,6 +7,10 @@ export function SeriesView(_props: IRouteProps) {
     <div class="hero">
       <kpc-unsplash-image id="hero" key="purple-yarn"></kpc-unsplash-image>
     </div>
+    <p class="intro">
+      lorem ipsum
+    </p>
+    <kpc-series-nav></kpc-series-nav>
   `
 };
 

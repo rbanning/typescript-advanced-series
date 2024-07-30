@@ -1,0 +1,25 @@
+.series-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+
+  a {
+    color: var(--dark--text-color);
+    &.current {
+      font-weight: bold;
+      color: var(--dark--text-color-accent);
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    a {
+      color: var(--light--text-color);
+      &.current {
+        color: var(--light--text-color-accent);
+      }
+    }  
+  }
+}
+

@@ -5,7 +5,7 @@ export const advisorConfig: ISeriesConfig = {
   id: 'advisor',
   ordinal: 1,
   title: 'Your Advisor',
-  subtitle: 'Tour the Campus with ${getAdvisor().name}',
+  subtitle: `Tour the Campus with ${getAdvisor().name}`,
   introduction: `
     <p>
     <strong>Great to See You!</strong> <br/>

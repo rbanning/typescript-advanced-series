@@ -1,0 +1,18 @@
+.series-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 1rem 0;
+  border-top: dashed 2px slategray;
+  border-bottom: dashed 2px slategray;
+
+  h3 { margin-bottom: 1rem; }
+
+  @media (prefers-color-scheme: light) {
+  }
+}

@@ -1,0 +1,16 @@
+.series-heading {
+  display: block;
+
+  .subtitle {
+    margin: 0;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--dark--text-color-accent);
+  }
+
+  @media (prefers-color-scheme: light) {
+    .subtitle {
+      color: var(--light--text-color-accent);
+    }
+  }
+}
