@@ -12,7 +12,7 @@ export function SeriesItemView(arg: string | ISeriesConfigExtended) {
       return `
         <kpc-series-heading key="${config.id}"></kpc-series-heading>
         <div class="hero">
-          <kpc-unsplash-image key="${config.id}"></kpc-unsplash-image>
+          <kpc-unsplash-image key="${config.id}" cover="top"></kpc-unsplash-image>
         </div>
         <kpc-series-intro key="${config.id}"></kpc-series-intro>
 

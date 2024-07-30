@@ -22,8 +22,9 @@ function UnsplashImageCredit(photo: IUnsplash): HTMLElement {
 export class UnsplashImage extends HTMLElement {
   private width: Nullable<number>;
   private key: Nullable<string>;
+  private cover: Nullable<string>;
 
-  static observedAttributes = ["size", "key"]
+  static observedAttributes = ["size", "key", "cover"]
 
   constructor() {
     super();
@@ -34,12 +35,16 @@ export class UnsplashImage extends HTMLElement {
   }
 
   attributeChangedCallback(name: string, oldValue: Nullable<string>, newValue: Nullable<string>) {
-    let requireRefresh = !!this.querySelector(`.${styles['unsplash-image']}`);
+    let requireRefresh = this.childElementCount > 0;
 
     switch (name) {
       case "key":
         this.key = unsplashRepo.some(m => m.id === newValue) ? newValue : oldValue;
         requireRefresh = requireRefresh && this.key !== oldValue;
+        break;
+      case "cover":
+        this.cover = newValue;
+        requireRefresh = requireRefresh && newValue !== oldValue;
         break;
       case "size":
         const _size = parseInt(newValue ?? '');
@@ -74,6 +79,7 @@ export class UnsplashImage extends HTMLElement {
       wrapper.appendChild(inner);
 
       const image = new Image();
+      image.classList.add(styles[`cover-${this.cover}`] ?? 'ordinary');
       inner.appendChild(image);
       inner.appendChild(UnsplashImageCredit(unsplash));
 
@@ -86,7 +92,6 @@ export class UnsplashImage extends HTMLElement {
       image.onload = () => {
         //success - append to target
         this.appendChild(wrapper);
-        console.log("Unsplash Image loaded", {unsplash, wrapper});
       };
       
       image.onerror = (e) => {

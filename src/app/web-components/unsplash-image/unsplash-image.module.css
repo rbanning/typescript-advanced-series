@@ -14,6 +14,12 @@
         width: 100%;
         object-fit: cover;
         object-position: center;
+        &.cover-top {
+          object-position: top;
+        }
+        &.cover-bottom {
+          object-position: bottom;
+        }        
       }
     }
 
