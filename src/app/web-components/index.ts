@@ -1,3 +1,5 @@
+import { CodeBlock } from "./code-block/code-block";
+import { CopyIcon } from "./copy-icon/copy-icon";
 import { SeriesFooter } from "./series-footer/series-footer";
 import { SeriesHeading } from "./series-heading/series-heading";
 import { SeriesIntro } from "./series-intro/series-intro";
@@ -9,10 +11,14 @@ import { WebComponentClass } from "./web-components.config";
 const webComponents: WebComponentClass[] = [
   Test,
   UnsplashImage,
+  CopyIcon,
+  CodeBlock,
+
   SeriesHeading,
   SeriesIntro,
   SeriesNav,  
   SeriesFooter,
+
 ]
 
 export function defineOurWebComponents() {

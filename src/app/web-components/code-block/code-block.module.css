@@ -1,0 +1,38 @@
+.code-block {
+  display: block;
+  border: solid 2px black;
+  background-color: #333;
+  box-shadow: 1px 3px 6px black;
+  overflow: hidden;
+  
+  .heading {
+    display: flex; 
+    align-items: center;
+    gap: 1rem;
+    padding: 2px max(2vw, 1rem);
+    background-color: black;
+    
+    .title {
+      flex: 1 1 auto;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    button {
+      /* reset */
+      border: none;
+      outline: none;
+      background-color: transparent;
+
+      padding: 0.5rem;
+    }
+  }
+
+  pre {
+    padding: 0.5rem max(2vw, 1rem);
+    overflow-x: scroll;
+
+    color: ghostwhite;
+  }
+}

@@ -21,4 +21,21 @@ export abstract class BaseWebComponent extends HTMLElement {
     }
   }
 
+  protected createElement(tag: string, ...classNames: string[]) {
+    const el = document.createElement(tag);
+    (classNames ?? []).forEach(css => el.classList.add(css));
+    return el;
+  }
+
+  protected cloneChildren() {
+    return Array.from(this.childNodes)
+      .map(child => child.cloneNode(true));
+  }
+
+  protected appendNodes(target: HTMLElement, nodes: Node[]) {
+    if (target && nodes?.length > 0) {
+      nodes.forEach(n => target.appendChild(n));
+    }
+  }
+
 }

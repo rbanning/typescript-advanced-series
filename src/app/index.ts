@@ -6,6 +6,8 @@ import { defineOurWebComponents } from './web-components/index.ts';
 defineOurWebComponents(); //first thing!
 activateRouter();
 
+
+
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   ${Header()}
   ${Container(`

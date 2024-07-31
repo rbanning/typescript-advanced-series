@@ -1,0 +1,31 @@
+.copy-icon {
+  position: relative;
+  display: inline-flex;
+
+  span { 
+    width: 1em; height: 1em; 
+    border-radius: 1px;
+    &.first {
+      border: solid 2px #696969; 
+    }
+    &.second {
+      border-top: solid 2px #696969;
+      border-right: solid 2px #696969; 
+      opacity: .9;
+      transform: translate(-0.9em, -3px);   
+    }
+  }
+
+  &.light {
+    span { border-color: ghostwhite; }
+  }
+  &.dark {
+    span { border-color: #2a2a2a; }
+  }
+
+  @media (prefers-color-scheme: light) {
+    :not(.light, .dark) {
+      span { border-color: #696969; }  
+    }
+  }
+}

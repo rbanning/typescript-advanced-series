@@ -17,7 +17,11 @@ export function SeriesItemView(arg: string | ISeriesConfigExtended) {
         <kpc-series-intro key="${config.id}"></kpc-series-intro>
 
         <div style="margin: 3rem 0;">
-          todo: add content here
+          <kpc-code-block lang="typescript">
+//todo: need to add the series' content including problems 
+const a = 54;
+const b = "Aliquam dolor arcu, euismod malesuada dui at, iaculis blandit lacus. Curabitur sollicitudin lorem at lectus efficitur, et ultrices metus accumsan. Fusce venenatis rutrum scelerisque. Mauris vehicula quam vel vehicula elementum. Aliquam hendrerit, ex vitae lacinia elementum, neque turpis sodales massa, sit amet ultricies libero dui vitae diam. In molestie fermentum commodo. Etiam vestibulum egestas justo, eget congue dui tincidunt non. Suspendisse et aliquam libero. Quisque pretium metus sit amet tortor luctus malesuada. Etiam nec semper nibh.";
+          </kpc-code-block>
         </div>
 
         <kpc-series-footer key="${config.id}"></kpc-series-footer>
