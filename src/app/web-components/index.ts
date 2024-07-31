@@ -1,5 +1,6 @@
 import { CodeBlock } from "./code-block/code-block";
 import { CopyIcon } from "./copy-icon/copy-icon";
+import { ProblemSet } from "./problem-set/problem-set";
 import { SeriesFooter } from "./series-footer/series-footer";
 import { SeriesHeading } from "./series-heading/series-heading";
 import { SeriesIntro } from "./series-intro/series-intro";
@@ -19,6 +20,7 @@ const webComponents: WebComponentClass[] = [
   SeriesNav,  
   SeriesFooter,
 
+  ProblemSet,
 ]
 
 export function defineOurWebComponents() {

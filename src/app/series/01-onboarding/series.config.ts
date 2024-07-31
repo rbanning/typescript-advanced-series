@@ -1,4 +1,7 @@
 import { ISeriesConfig } from "../series.types";
+import { idBadgeProblemSet } from "./id-badge/id-badge.problem";
+import { mailboxProblemSet } from "./mailbox/mailbox.problem";
+import { mealPlanProblemSet } from "./meal-plan/meal-plan.problem";
 
 export const onboardingConfig: ISeriesConfig = {
   id: 'onboarding',
@@ -30,5 +33,6 @@ export const onboardingConfig: ISeriesConfig = {
     <strong>Meal Plan<strong>
   </p>
 
-  `
+  `,
+  problems: [idBadgeProblemSet, mailboxProblemSet, mealPlanProblemSet]
 }
