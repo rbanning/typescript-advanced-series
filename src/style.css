@@ -142,6 +142,10 @@ nav {
   font-size: 1.2rem;  
 }
 
+.warning {
+  border-bottom: 1px dotted pink;
+}
+
 /* LIGHT */
 
 @media (prefers-color-scheme: light) {

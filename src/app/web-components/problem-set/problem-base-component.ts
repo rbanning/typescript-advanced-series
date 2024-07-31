@@ -1,4 +1,4 @@
-import { Nullable } from "../../utils";
+import { isNotNullish, Nullable } from "../../utils";
 import { IProblemSet, ISeriesConfigExtended } from "../../series/series.types";
 import { BaseWebComponent } from "../base-web-component";
 import { seriesConfigList } from "../../series";
@@ -93,6 +93,7 @@ export class ProblemBaseComponent extends BaseWebComponent {
           this.key = newValue;
         }
         this.resolveProblemSet();
+        console.log(">>> problem set", {newValue, key: this.key, parseInt: parseInt(newValue ?? ''), ps: this.problemSet});
         requiresRefresh = requiresRefresh && (newValue !== oldValue);
         resolved = true;     
         break;
@@ -106,7 +107,7 @@ export class ProblemBaseComponent extends BaseWebComponent {
 
 
   protected resolveProblemSet() {
-    if (this.config?.problems && this.key) {
+    if (this.config?.problems && isNotNullish<string|number>(this.key)) {
       this.problemSet = typeof(this.key) === 'number' 
           ? this.config.problems[this.key]
           : this.config.problems.find(m => m.id === this.key);

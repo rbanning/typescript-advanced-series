@@ -1,23 +1,13 @@
-import { seriesConfigList } from "../../series";
-import { IProblemSet, ISeriesConfigExtended } from "../../series/series.types";
+import { ISeriesConfigExtended } from "../../series/series.types";
 import { Nullable } from "../../utils";
-import { BaseWebComponent } from "../base-web-component";
 import { PREFIX } from "../web-components.config";
+import { ProblemBaseComponent } from "./problem-base-component";
 
 import styles from "./problem-set.module.css";
 
 
-export class ProblemSet extends BaseWebComponent {
-  private config: Nullable<ISeriesConfigExtended>;
-  private key: Nullable<string | number>;
+export class ProblemSet extends ProblemBaseComponent {
 
-  private get problemSet(): Nullable<IProblemSet> {
-    if (this.config?.problems && this.key) {
-      return typeof(this.key) === 'number' ? this.config.problems[this.key] : this.config.problems.find(p => p.id === this.key);
-    }
-    //else
-    return null;
-  }
 
   static observedAttributes = ["series", "key"]
 
@@ -25,60 +15,41 @@ export class ProblemSet extends BaseWebComponent {
     super();
   }
 
-  connectedCallback() {
-    this.buildComponent();
-  }
-
-
   attributeChangedCallback(name: string, oldValue: Nullable<string>, newValue: Nullable<string>) {
-    let requireRefresh = this.childNodes.length > 0;
 
-    switch (name) {
-      case "series":        
-        const config = seriesConfigList.find(m => m.id === newValue);
-        if (config) {
-          this.config = config;
-          requireRefresh = requireRefresh && (newValue !== oldValue);
-        } else {
-          requireRefresh = false;
-        }        
-      break;
-      case "key": 
-        this.key = parseInt(newValue ?? '');
-        if (isNaN(this.key)) {
-          this.key = newValue;
-        }
-        requireRefresh = requireRefresh && (newValue !== oldValue);
-        break;
-      default: 
-        console.warn(`${ProblemSet.TAG} - unsupported attribute: ${name}`);
-        requireRefresh = false;
-        break;
+    let { resolved, requiresRefresh } = this.parseAttributeChanges(name, oldValue, newValue);
+
+    if (!resolved) {
+      switch (name) {
+        //add any other name checks
+        default: 
+          console.warn(`${ProblemSet.TAG} - unsupported attribute: ${name}`);
+          requiresRefresh = false;
+          break;
+      }
     }
 
-    if (requireRefresh) {
+    if (requiresRefresh) {
       this.buildComponent();
     }
   }
 
 
-  protected buildComponent() {
-    this.reset();
-
-    const problemSet = this.problemSet;
-    if (this.config && problemSet) {
+  protected customBuild() {
+    if (this.config && this.problemSet) {
       
       this.classList.add(styles['problem-set']);
   
       const problemEl = this.createElement('div', styles['problem']);  
-      problemEl.innerHTML = problemSet.problem(this.config);
+      console.log(">>> problem", {problemSet: this.problemSet, problem: this.problemSet.problem(this.config)});
+      problemEl.innerHTML = this.problemSet.problem(this.config);
       this.appendChild(problemEl);
 
-      if (problemSet.hints.length > 0) {
+      if (this.problemSet.hints.length > 0) {
         const hintsEl = this.createElement('div', styles['hints'])
         hintsEl.innerHTML = `
           <div class="${styles['hint']}">
-          ${problemSet.hints
+          ${this.problemSet.hints
               .map(h => h(this.config as ISeriesConfigExtended))
               .join(`</div> <div class="${styles['hint']}">`)
           }
@@ -88,7 +59,7 @@ export class ProblemSet extends BaseWebComponent {
       }
 
       const solutionEl = this.createElement('div', styles['solution']);  
-      solutionEl.innerHTML = problemSet.solution(this.config);
+      solutionEl.innerHTML = this.problemSet.solution(this.config);
       this.appendChild(solutionEl);
       
       const span2 = this.createElement('span', styles['second']);  

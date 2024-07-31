@@ -1,0 +1,30 @@
+.id-badge {
+  display: flex;
+  gap: 2rem;
+  border: solid 2px ghostwhite;
+  border-radius: 1rem;
+  box-shadow: 1px 3px 6px rgba(200, 196, 196, 0.5);
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+
+  .content {
+    display: flex; 
+    flex-direction: column;
+    gap: 0.5rem;
+    line-height: 1.1;
+    font-size: 0.8rem;
+
+    .name { font-weight: bold; }
+    .school { font-style: italic; }
+  }
+
+  @media (prefers-color-scheme: light) {
+    border-color: black;
+    box-shadow: 1px 3px 6px rgba(0,0,0, 0.5);
+
+  }
+}
