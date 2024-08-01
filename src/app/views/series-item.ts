@@ -16,9 +16,8 @@ export function SeriesItemView(arg: string | ISeriesConfigExtended) {
         </div>
         <kpc-series-intro key="${config.id}"></kpc-series-intro>
 
-        ${config.problems?.map((ps, index) => (`
+        ${config.problems?.map((_, index) => (`
           <div style="margin: 3rem 0;">
-            <h2>ProblemSet #${index} - ${ps.title}</h2> 
             <kpc-problem-set series="${config.id}" key="${index}"></kpc-problem-set>
           </div>
         `))}

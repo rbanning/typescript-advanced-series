@@ -10,7 +10,7 @@ export class CodeBlock extends BaseWebComponent {
   static observedAttributes = ["language"]
   
   protected language: string = "Typescript";
-  protected codeToLoad: Nullable<string>;
+  protected codeToLoad: Node[] = [];
 
 
   constructor() {
@@ -43,8 +43,8 @@ export class CodeBlock extends BaseWebComponent {
 
   protected buildComponent() {
     if (!this.querySelector(styles['code-block'])) {
-      console.log(">>> inner ", {text: this.innerText, html: this.innerHTML});
-      this.codeToLoad = this.innerHTML;
+      this.codeToLoad = this.cloneChildren();
+      console.log(">>> code-block ", {text: this.innerText, html: this.innerHTML, code: this.codeToLoad});
     }
     this.reset();
 
@@ -69,18 +69,35 @@ export class CodeBlock extends BaseWebComponent {
     const code = this.createElement('code');
     pre.appendChild(code);
 
-    code.innerHTML = this.codeToLoad ?? "//empty code block";    
-    //hljs.highlightElement(code);
+    if (this.codeToLoad.length === 0) {
+      code.innerHTML = "//empty code block";    
+    } else {
+      this.codeToLoad.forEach(n => code.appendChild(n));
+    }
 
-
+    console.log(">>> code", code);
   }
 
 
   protected copy() {
-    const code = this.querySelector('code');
-    if (code) {
-      const content = code.innerText;
-      copyToClipboard(content)
+    let code: string[] = [];
+
+    const copyNode = (node: Node) => {
+      let ret: string[] = [];
+      if (node.nodeType === Node.TEXT_NODE) {
+        ret.push(node.textContent ?? '');
+      } else if (node.hasChildNodes()) {
+        node.childNodes.forEach(child => {
+          ret = [...ret, ...copyNode(child)];
+        });
+      }
+      return ret;
+    }
+    if (this.codeToLoad.length) {
+      this.codeToLoad.forEach(node => {
+        code = [...code, ...copyNode(node)];
+      })
+      copyToClipboard(code.join(' '))
         .then(() => {
           console.log("Code has been copied to your clipboard");
         })

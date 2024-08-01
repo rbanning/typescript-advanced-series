@@ -13,8 +13,18 @@
   --light--link-color: #6165b6;
   --light--link-color-accent: #995faf;
 
+  /* font families */
+  --font-sans: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', Times, serif;
+  --font-mono: 'Courier New', Courier, monospace;
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* width break points */
+  --width-sm: 400px;
+  --width-md: 600px;
+  --width-lg: 800px;
+  --width-xl: 1024px;
+
+  font-family: var(--font-sans);
   line-height: 1.5;
   font-weight: 400;
   font-size: 16px;
@@ -51,7 +61,7 @@ a {
 }
 
 h1, h2 { 
-  font-family: Georgia, 'Times New Roman', Times, serif;  
+  font-family: var(--font-serif);  
   line-height: 1; 
   margin: 0;
   &.with-space {
@@ -64,7 +74,8 @@ h1 {
   text-align: center;
 }
 h2 {
-  font-size: 2.6rem;
+  font-size: 2.4rem;
+  font-weight: 300;
   letter-spacing: -2px; 
 }
 h3 {
@@ -76,6 +87,10 @@ h3 {
   &.with-space {
     margin: 1.5rem 0;
   }
+}
+
+code {
+  font-family: var(--font-mono);
 }
 
 .hero {
@@ -145,6 +160,21 @@ nav {
 .warning {
   border-bottom: 1px dotted pink;
 }
+
+.w-sm {
+  max-width: var(--width-sm);
+}
+.w-md {
+  max-width: var(--width-md);
+}
+.w-lg {
+  max-width: var(--width-lg);
+}
+.w-xl {
+  max-width: var(--width-xl);
+}
+
+
 
 /* LIGHT */
 

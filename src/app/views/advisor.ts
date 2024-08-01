@@ -16,7 +16,7 @@ export function AdvisorView(arg: string | IAdvisor) {
           <kpc-unsplash-image key="${advisor.id}" size="400"></kpc-unsplash-image>
         </div>
         <h3 style="text-align: center;">Department of ${advisor.dept}</h3>
-        <div style="margin: 2rem auto; max-width: 650px;">
+        <div style="margin: 2rem auto; max-width: var(--width-md);">
           ${advisor.profile}
         </div>
       `

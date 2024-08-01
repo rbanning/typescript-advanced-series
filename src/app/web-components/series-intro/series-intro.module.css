@@ -2,7 +2,7 @@
   display: block;
   margin: 2rem 0;
   .intro {
-    max-width: 600px;
+    max-width: var(--width-md);
     margin: 0 auto;
     padding: 0.5rem 1rem;
     border-top: solid 2px slategray;

@@ -15,31 +15,47 @@ export const idBadgeProblemSet: IProblemSet = {
 
 function theProblem(_series: ISeriesConfigExtended): string {
 
-  const generator = `<kpc-code-block>one</kcp-code-block>`; 
-//   `<kpc-code-block>function idBadgeGenerator(student: any) {
-//   return "...";
-// }</kcp-code-block>`;
+  const generator = `function idBadgeGenerator(student: any) {
+    const { name, gradYr, school, pronouns, profile } = student;
+    //... work ...
+    return "...";
+}`;
 
-  const sampleInput = `<kpc-code-block>const input = ${idBadgeInputExampleString};</kcp-code-block>`;
+  const sampleInput = `const input = ${idBadgeInputExampleString};`;
 
-  return `
+  const html = `
     <h3>Introduction</h3>
-    <p>
-    Before we can do anything, you need to get your ID Badge.  Unfortunately, there is a problem
-    with the badge generator.  It was developed by an <code>any</code loving coder who had not
-    embraced the "Type" part of Typescript.
-    </p>
-    <p>
-    What we need you to do is to develop a <code>Type</code> or <code>interface</code> that we 
-    can use in our badge generator.
-    </p>
+    <div class="w-lg">
+      <p>
+      Before we can do anything, you need to get your ID Badge.  Unfortunately, there is a problem
+      with the badge generator.  It was developed by an <code>any</code loving coder who had not
+      embraced the "Type" part of Typescript.
+      </p>
+      <p>
+      What we need you to do is to develop a <code>Type</code> or <code>interface</code> that we 
+      can use in our badge generator.
+      </p>
+    </div>
 
     <h3 style="margin-top: 2rem;">Generator</h3>
-    ${sampleInput}
-
+    <kpc-code-block>${generator}</kpc-code-block>
+    <p class="w-lg">
+    Don't worry about how the id is generated.  You are only concerned with replacing the <code>any</code> with a type or interface.
+    Below is a sample of how the input is configured.  Notice that it includes a header row.
+    </p>
     <h3 style="margin-top: 2rem;">Sample Input</h3>
-    ${sampleInput}
-  `
+    <kpc-code-block>${sampleInput}</kpc-code-block>
+    <p class="w-lg">
+    This really isn't a tough problem.  
+    We are starting with a nice warm up so you can get used to the style of our problem sets.
+    This is to say... don't over think this one!
+    </p>
+    
+
+  `;
+
+  console.log("html", {html})
+  return html; 
 }
 
 function theSolution(_series: ISeriesConfigExtended): string {

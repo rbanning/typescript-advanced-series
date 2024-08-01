@@ -1,11 +1,11 @@
 .container {
   width: full;
-  max-width: 1024px;
+  max-width: var(--width-xl);
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-@media (min-width: 400px) {
+@media (min-width: var(--width-sm)) {
   .container {
     padding: 0 0;
   }

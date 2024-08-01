@@ -1,5 +1,5 @@
 
-export const idBadgeInput = `name,grad_yr,school,pronouns,profile
+export const idBadgeInput = `name,gradYr,school,pronouns,profile
 Pepito Hurler,2028,School of Data Science,She/Her,https://i.pravatar.cc/150?u=Pepito
 Gordon Harlick,2026,School of Fluid Dynamics,They/Them,https://i.pravatar.cc/150?u=Gordon
 Dedra Riddett,2029,School of Advanced Mathematics,prefer not to say,https://i.pravatar.cc/150?u=Dedra

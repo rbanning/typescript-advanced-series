@@ -1,4 +1,4 @@
-import { ISeriesConfigExtended } from "../../series/series.types";
+import { IProblemSet } from "../../series/series.types";
 import { Nullable } from "../../utils";
 import { PREFIX } from "../web-components.config";
 import { ProblemBaseComponent } from "./problem-base-component";
@@ -39,33 +39,39 @@ export class ProblemSet extends ProblemBaseComponent {
     if (this.config && this.problemSet) {
       
       this.classList.add(styles['problem-set']);
-  
-      const problemEl = this.createElement('div', styles['problem']);  
-      console.log(">>> problem", {problemSet: this.problemSet, problem: this.problemSet.problem(this.config)});
-      problemEl.innerHTML = this.problemSet.problem(this.config);
-      this.appendChild(problemEl);
+      this.appendChild(this.problemSetHeading(this.problemSet));
 
-      if (this.problemSet.hints.length > 0) {
-        const hintsEl = this.createElement('div', styles['hints'])
-        hintsEl.innerHTML = `
-          <div class="${styles['hint']}">
-          ${this.problemSet.hints
-              .map(h => h(this.config as ISeriesConfigExtended))
-              .join(`</div> <div class="${styles['hint']}">`)
-          }
-          </div>
-        `
-        this.appendChild(hintsEl);
-      }
-
-      const solutionEl = this.createElement('div', styles['solution']);  
-      solutionEl.innerHTML = this.problemSet.solution(this.config);
-      this.appendChild(solutionEl);
+      const theProblem = this.createElement('div', styles['problem']);  
+      this.appendChild(theProblem);
       
-      const span2 = this.createElement('span', styles['second']);  
-      this.appendChild(span2);  
+      theProblem.innerHTML = this.problemSet.problem(this.config);
 
+      // if (this.problemSet.hints.length > 0) {
+      //   const hintsEl = this.createElement('div', styles['hints'])
+      //   hintsEl.innerHTML = `
+      //     <div class="${styles['hint']}">
+      //     ${this.problemSet.hints
+      //         .map(h => h(this.config as ISeriesConfigExtended))
+      //         .join(`</div> <div class="${styles['hint']}">`)
+      //     }
+      //     </div>
+      //   `
+      //   this.appendChild(hintsEl);
+      // }
+
+      // const solutionEl = this.createElement('div', styles['solution']);  
+      // solutionEl.innerHTML = this.problemSet.solution(this.config);
+      // this.appendChild(solutionEl);      
     }
+  }
+
+  protected problemSetHeading(ps: IProblemSet) {
+    const heading = this.createElement('div', styles['heading']);
+    heading.innerHTML = `
+      <h2>${ps.title}</h2>
+      <div class="${styles['subtitle']}">${ps.subtitle}</div>
+    `;
+    return heading;
   }
 
   static readonly TAG = `${PREFIX}-problem-set`;

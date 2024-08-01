@@ -1,5 +1,17 @@
 .problem-set {
   display: block;
 
-  
+  .heading {
+    max-width: var(--width-lg);
+    margin: 0 auto 2rem auto;
+    text-align: center;
+    h2 {
+      font-family: var(--font-mono);
+      border-bottom: solid 1px #999999;
+    }
+    .subtitle {
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+  }
 }
