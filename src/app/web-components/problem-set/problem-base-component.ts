@@ -93,7 +93,6 @@ export class ProblemBaseComponent extends BaseWebComponent {
           this.key = newValue;
         }
         this.resolveProblemSet();
-        console.log(">>> problem set", {newValue, key: this.key, parseInt: parseInt(newValue ?? ''), ps: this.problemSet});
         requiresRefresh = requiresRefresh && (newValue !== oldValue);
         resolved = true;     
         break;

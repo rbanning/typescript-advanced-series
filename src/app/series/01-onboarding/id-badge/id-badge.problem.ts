@@ -15,7 +15,7 @@ export const idBadgeProblemSet: IProblemSet = {
 
 function theProblem(_series: ISeriesConfigExtended): string {
 
-  const generator = `function idBadgeGenerator(student: any) {
+  const generator = `function idBadgeGenerator(student: <span class="warning">any</span>) {
     const { name, gradYr, school, pronouns, profile } = student;
     //... work ...
     return "...";

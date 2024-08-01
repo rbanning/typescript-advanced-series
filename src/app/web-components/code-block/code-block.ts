@@ -44,7 +44,6 @@ export class CodeBlock extends BaseWebComponent {
   protected buildComponent() {
     if (!this.querySelector(styles['code-block'])) {
       this.codeToLoad = this.cloneChildren();
-      console.log(">>> code-block ", {text: this.innerText, html: this.innerHTML, code: this.codeToLoad});
     }
     this.reset();
 
@@ -74,8 +73,6 @@ export class CodeBlock extends BaseWebComponent {
     } else {
       this.codeToLoad.forEach(n => code.appendChild(n));
     }
-
-    console.log(">>> code", code);
   }
 
 
