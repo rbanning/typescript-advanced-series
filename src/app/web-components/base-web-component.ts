@@ -1,5 +1,10 @@
-
+type BasicListener = {
+  target: Element;
+  type: string;
+  listener: EventListenerOrEventListenerObject;
+}
 export abstract class BaseWebComponent extends HTMLElement {
+  protected listeners: BasicListener[] = [];
 
   constructor() {
     super();    
@@ -9,9 +14,14 @@ export abstract class BaseWebComponent extends HTMLElement {
     this.buildComponent();
   }
 
+  disconnectedCallback() {
+    //clean up any listeners
+    this.listeners.forEach(x => x.target.removeEventListener(x.type, x.listener));
+  }
 
   protected buildComponent() {
     //add build implementation here
+    this.addEventListener
   }
 
 
@@ -36,6 +46,11 @@ export abstract class BaseWebComponent extends HTMLElement {
     if (target && nodes?.length > 0) {
       nodes.forEach(n => target.appendChild(n));
     }
+  }
+
+  protected registerEvent(target: Element, type: string, listener: EventListenerOrEventListenerObject) {
+    this.listeners.push({ target, type, listener });
+    target.addEventListener(type, listener);
   }
 
 }

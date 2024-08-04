@@ -1,0 +1,14 @@
+.tabs-wrapper {
+  display: block;
+  
+  .labels {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 0 1rem;
+    border-bottom: solid 2px #999999;
+  }
+  .views {
+    padding: 1rem;
+  }
+}

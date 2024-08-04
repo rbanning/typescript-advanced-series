@@ -1,0 +1,24 @@
+.tab-view {
+  display: none;
+  opacity: 0;
+  transform: scale(0);
+  z-index: -1000;
+  transition: all 1s ease-in-out;
+
+  &.active {
+    display: block;
+    z-index: 1;
+    animation: viewIn 500ms ease-in-out forwards;
+  }
+}
+
+@keyframes viewIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,23 +1,37 @@
 .tab-label {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border: solid 1px #999999;
-  border-top-left-radius: .03rem;
-  border-top-right-radius: .03rem;
+  btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: solid 1px #999999;
+    border-bottom: none;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+    cursor: pointer;
 
-  .active {
+    &:hover {
+      background-color: color-mix(in srgb, var(--dark--text-color-accent) 10%, transparent);
+    }
+  }
+
+  &.active btn {
+    padding: 0.75rem;
     font-weight: bold;
-    color: var(--dark-text-accent);
-    background-color: color-mix(in srgb, var(--dark-text-accent) 10%, transparent);
+    color: var(--dark--text-color-accent);
+    background-color: color-mix(in srgb, var(--dark--text-color-accent) 10%, transparent);
   }
 
 
   @media (prefers-color-scheme: light) {
-    border-color: #525151;
-    .active {
+    btn { 
+      border-color: #525151; 
+      &:hover {
+        background-color: color-mix(in srgb, var(--light--text-color-accent) 10%, transparent);
+      }  
+    }
+    &.active btn {
       font-weight: bold;
-      color: var(--light-text-accent);
-      background-color: color-mix(in srgb, var(--light-text-accent) 10%, transparent);
+      color: var(--light--text-color-accent);
+      background-color: color-mix(in srgb, var(--light--text-color-accent) 10%, transparent);
     }
   }
 }
