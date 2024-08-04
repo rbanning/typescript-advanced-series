@@ -1,0 +1,23 @@
+.tab-label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: solid 1px #999999;
+  border-top-left-radius: .03rem;
+  border-top-right-radius: .03rem;
+
+  .active {
+    font-weight: bold;
+    color: var(--dark-text-accent);
+    background-color: color-mix(in srgb, var(--dark-text-accent) 10%, transparent);
+  }
+
+
+  @media (prefers-color-scheme: light) {
+    border-color: #525151;
+    .active {
+      font-weight: bold;
+      color: var(--light-text-accent);
+      background-color: color-mix(in srgb, var(--light-text-accent) 10%, transparent);
+    }
+  }
+}

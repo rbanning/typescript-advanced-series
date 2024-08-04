@@ -14,7 +14,7 @@ return `
       ${advisorRepo.map(advisor => (`
         <a href="${advisor.href}" style="margin: 0.5rem 0; display: flex; flex-direction: column;">
           <span style="font-size: 1.4rem;">Dr. ${advisor.name}</span>
-          <span class="accent">Dept. of ${advisor.dept}</span>
+          <span class="text-accent">Dept. of ${advisor.dept}</span>
         </a>
         `)).join('')}
     </div>

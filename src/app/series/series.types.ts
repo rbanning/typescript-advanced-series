@@ -1,4 +1,10 @@
-
+import { Nullable } from './../utils/nullable.type';
+export interface IObjective {
+  id: string;
+  title: string;
+  description: string;
+  completed?: Nullable<boolean>;
+}
 
 export interface ICoreInfo {
   id: string;
@@ -9,6 +15,7 @@ export interface ICoreInfo {
 
 export interface ISeriesConfig extends ICoreInfo {
   introduction: string;
+  objectives?: IObjective[];
   problems?: IProblemSet[];
 }
 

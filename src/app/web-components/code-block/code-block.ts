@@ -94,7 +94,7 @@ export class CodeBlock extends BaseWebComponent {
       this.codeToLoad.forEach(node => {
         code = [...code, ...copyNode(node)];
       })
-      copyToClipboard(code.join(' '))
+      copyToClipboard(code.join(''))
         .then(() => {
           console.log("Code has been copied to your clipboard");
         })
