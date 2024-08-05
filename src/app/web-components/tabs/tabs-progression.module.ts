@@ -6,13 +6,39 @@ import { TabView } from "./tab-view";
 
 import styles from './tabs-horizontal.module.css';
 
+export type ProgressionState = {
+  pending: string[],
+  completed: string[],
+  current: Nullable<string>
+}
 
-export class TabsHorizontal extends BaseWebComponent {
+const defaultState: ProgressionState = {
+  pending: [],
+  completed: [],
+  current: null
+};
+
+export class TabsProgression extends BaseWebComponent {
   protected tabs: TabLabel[] = [];
   protected views: TabView[] = [];
   protected componentHasBeenBuilt = false;
 
-
+  protected current: Nullable<string>;
+  get state(): ProgressionState {
+    //keep immutable
+    return {
+      pending: this.tabs.filter(m => 
+        m.target //must have a target
+        && m.disabled //musth be disabled
+      ).map(m => m.target ?? ''),
+      completed: this.tabs.filter(m => 
+        m.target  //must have a target
+        && !m.active  //the active target is not considered completed
+        && !m.disabled  //cannot be disabled
+      ).map(m => m.target ?? ''),
+      current: this.current
+    };
+  }
 
   static observedAttributes = []
 
@@ -30,7 +56,7 @@ export class TabsHorizontal extends BaseWebComponent {
 
     switch (name) {
       default: 
-        console.warn(`${TabsHorizontal.TAG} - unsupported attribute: ${name}`);
+        console.warn(`${TabsProgression.TAG} - unsupported attribute: ${name}`);
         requireRefresh = false;
         break;
     }
@@ -40,6 +66,11 @@ export class TabsHorizontal extends BaseWebComponent {
     }
   }
 
+  setCompleted(target: string) {
+    if (!this._state.completed.includes(target)) {
+      this._state.completed.push(target);
+    }
+  }
 
   protected buildComponent() {
     if (!this.componentHasBeenBuilt) {
@@ -59,7 +90,8 @@ export class TabsHorizontal extends BaseWebComponent {
 
     const labels = this.createElement('div', styles['labels']);
     this.appendChild(labels);
-    this.tabs.forEach(t => {
+    this.tabs.forEach((t, index) => {
+      t.active = index === 0; //first tab must be active
       labels.appendChild(t);
       this.registerEvent(t, TabLabel.clickEventKey, (e) => this.handleTabClick(e as CustomEvent));
     });
@@ -68,30 +100,40 @@ export class TabsHorizontal extends BaseWebComponent {
     this.appendChild(views);
     this.views.forEach(v => views.appendChild(v));
 
+    //update state
+    this._state = {
+      ...defaultState,
+      current: this.tabs.find(m => m.active === true)?.target
+    };
+
     this.updateComponent();
   }
 
-  protected updateComponent(target?: Nullable<string>) {
-    const active = this.tabs.find(m => typeof(target) === 'string' ? m.target === target : m.active === true);
+  protected updateComponent() {
+    //note: use state to determine active and disabled
+
     //reset
     this.tabs.forEach(m => {
-      m.setAttribute('active', `${active?.target === m.target}`);
+      m.setAttribute('active', `${this._state.current === m.target}`);
+      m.setAttribute('disabled', `${this._state.pending.includes(m.target ?? '')}`);
     });
     this.views.forEach(m => {
-      m.setAttribute('active', `${active?.target === m.id}`);
+      m.setAttribute('active', `${this._state.current === m.id}`);
+      m.setAttribute('disabled', `${this._state.pending.includes(m.id)}`);
     });
   }
 
   protected handleTabClick(e: CustomEvent<TabLabelClickEvent>) {
     const detail: TabLabelClickEvent = e.detail;
-    this.updateComponent(detail.target);
+    this._state.current = detail.target;
+    this.updateComponent();
   }
 
 
-  static readonly TAG = `${PREFIX}-tabs-horizontal`;
+  static readonly TAG = `${PREFIX}-tabs-progression`;
   static define() {
     if (!customElements.get(this.TAG)) {
-      customElements.define(this.TAG, TabsHorizontal);
+      customElements.define(this.TAG, TabsProgression);
     }
   }
 

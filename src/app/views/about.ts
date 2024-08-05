@@ -11,28 +11,28 @@ return `
 
     <div style="margin: 4rem 0;">
       <kpc-tabs-horizontal>
-        <kpc-tab-label label-for="one" active="true">One</kpc-tab-label>
+        <kpc-tab-label label-for="one" format="button" active="true">One</kpc-tab-label>
         <kpc-tab-view id="one">
           <h2>One</h2>
           <p>This is the content that will appear in a tab.</p>
           <p>Another paragraph of content</p>
         </kpc-tab-view>
 
-        <kpc-tab-label label-for="two">Two</kpc-tab-label>
+        <kpc-tab-label label-for="two" format="button">Two</kpc-tab-label>
         <kpc-tab-view id="two">
           <h2>Two</h2>
           <p>This is the content that will appear in a tab.</p>
           <p>Another paragraph of content</p>
         </kpc-tab-view>
 
-        <kpc-tab-label label-for="three">Three</kpc-tab-label>
+        <kpc-tab-label label-for="three" format="button">Three</kpc-tab-label>
         <kpc-tab-view id="three">
           <h2>Three</h2>
           <p>This is the content that will appear in a tab.</p>
           <p>Another paragraph of content</p>
         </kpc-tab-view>
 
-        <kpc-tab-label label-for="four">Four</kpc-tab-label>
+        <kpc-tab-label label-for="four" format="button">Four</kpc-tab-label>
         <kpc-tab-view id="four">
           <h2>Four</h2>
           <p>This is the content that will appear in a tab.</p>

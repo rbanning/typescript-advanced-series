@@ -1,11 +1,7 @@
 .tab-label {
   btn {
     display: inline-block;
-    padding: 0.5rem 1rem;
     border: solid 1px #999999;
-    border-bottom: none;
-    border-top-left-radius: .3rem;
-    border-top-right-radius: .3rem;
     cursor: pointer;
 
     &:hover {
@@ -13,11 +9,35 @@
     }
   }
 
-  &.active btn {
-    padding: 0.75rem;
-    font-weight: bold;
-    color: var(--dark--text-color-accent);
-    background-color: color-mix(in srgb, var(--dark--text-color-accent) 10%, transparent);
+  &.format-tab btn {
+    padding: 0.5rem 1rem;
+    border-bottom: none;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+  }
+  &.format-button btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: .7rem;
+  }
+
+  &.active {
+    &.format-tab btn {
+      padding: 0.75rem;
+      font-weight: bold;
+      color: var(--dark--text-color-accent);
+      background-color: color-mix(in srgb, var(--dark--text-color-accent) 10%, transparent);
+    }
+    &.format-button btn {
+      border-width: 2px;
+      font-weight: bold;
+      color: var(--dark--text-color-accent);
+      background-color: color-mix(in srgb, var(--dark--text-color-accent) 10%, transparent);
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    btn { cursor: none;}
   }
 
 
@@ -28,10 +48,17 @@
         background-color: color-mix(in srgb, var(--light--text-color-accent) 10%, transparent);
       }  
     }
-    &.active btn {
-      font-weight: bold;
-      color: var(--light--text-color-accent);
-      background-color: color-mix(in srgb, var(--light--text-color-accent) 10%, transparent);
+    &.active {
+      &.format-tab btn {
+        font-weight: bold;
+        color: color-mix(in srgb, var(--light--text-color-accent) 70%, black);
+        background-color: color-mix(in srgb, var(--light--text-color-accent) 10%, transparent);
+      }
+      &.format-button btn {
+        font-weight: bold;
+        color: color-mix(in srgb, var(--light--text-color-accent) 70%, black);
+        background-color: color-mix(in srgb, var(--light--text-color-accent) 10%, transparent);
+      }
     }
   }
 }
