@@ -10,7 +10,15 @@ export type TabLabelClickEvent = {
   element: TabLabel,
 };
 
-export type Format = 'tab' | 'button';
+export const tabFormats = ['tab', 'button'] as const;
+export type Format = typeof tabFormats[number];
+
+export function updateFormatStyles(target: HTMLElement, cssStyles: CSSModuleClasses, format: Format) {
+  tabFormats.forEach(f => {
+    target.classList.toggle(cssStyles[`format-${f}`], f === format);
+  })
+}
+
 
 export class TabLabel extends BaseWebComponent {
   protected _target: Nullable<string>;   //as indicated by the `label-for` attribute
@@ -106,8 +114,7 @@ export class TabLabel extends BaseWebComponent {
   updateComponent(btn?: Nullable<Element>) {
     //only if component has been built
     if (this.componentHasBeenBuilt) {
-      this.classList.toggle(styles['format-tab'], this.format === 'tab');
-      this.classList.toggle(styles['format-button'], this.format === 'button');
+      updateFormatStyles(this, styles, this.format);      
       this.classList.toggle(styles['active'], this.active === true);
       this.classList.toggle(styles['disabled'], this.disabled === true);
       btn ??= this.querySelector('btn');

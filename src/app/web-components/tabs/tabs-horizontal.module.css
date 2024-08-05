@@ -1,14 +1,32 @@
 .tabs-wrapper {
   display: block;
-  
+
   .labels {
     display: flex;
-    align-items: flex-end;
-    gap: 1rem;
     padding: 0 1rem;
-    border-bottom: solid 2px #999999;
   }
   .views {
     padding: 1rem;
+  }
+  
+  &.format-tab .labels {
+    align-items: flex-end;
+    gap: 1rem;
+    border-bottom: solid 2px #999999;
+    .spacer { display: none; }
+  }
+  
+  &.format-button .labels {
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: solid 1px #999999;
+    .spacer {
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: bold;
+      line-height: 1;
+      color: #aaaaaa;
+    }
   }
 }
