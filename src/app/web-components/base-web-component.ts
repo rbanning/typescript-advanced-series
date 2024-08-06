@@ -21,7 +21,6 @@ export abstract class BaseWebComponent extends HTMLElement {
 
   protected buildComponent() {
     //add build implementation here
-    this.addEventListener
   }
 
 

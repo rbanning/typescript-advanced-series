@@ -47,9 +47,17 @@ class SeriesRepository {
     return this.store.map(m => this.clone(m));
   }
 
-  get(id: Nullable<string>): Nullable<ISeriesConfigExtended> {
-    return this.clone(this.store.find(m => m.id === id));
+  get(idOrIndex: Nullable<string | number>): Nullable<ISeriesConfigExtended> {
+    if (typeof(idOrIndex) === 'number' && idOrIndex >= 0 && idOrIndex < this.store.length) {
+      return this.clone(this.store[idOrIndex]);
+    }
+    else if (typeof(idOrIndex === 'string')) {
+      return this.clone(this.store.find(m => m.id === idOrIndex));
+    }
+    //else
+    return null;
   }
+  
 
   find(predicate: FindPredicate) {
     return this.clone(this.list().find(predicate));

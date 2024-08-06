@@ -26,8 +26,9 @@ export class UnsplashImage extends HTMLElement {
 
   static observedAttributes = ["size", "key", "cover"]
 
-  constructor() {
+  constructor(key?: Nullable<string>) {
     super();
+    this.key = key;
   }
 
   connectedCallback() {

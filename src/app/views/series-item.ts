@@ -9,15 +9,11 @@ export function SeriesItemView(arg: string | ISeriesConfigExtended) {
   
   return (_props: IRouteProps) => {
     if (config) {
-      return `
-        <kpc-series-heading key="${config.id}"></kpc-series-heading>
-        <div class="hero">
-          <kpc-unsplash-image key="${config.id}" cover="top"></kpc-unsplash-image>
-        </div>
-        <kpc-series-intro key="${config.id}"></kpc-series-intro>
+      return `      
+        <kpc-series-item key="${config.id}"></kpc-series-item>
 
-        <h2 style="margin-top: 2rem; text-align: center;">Objectives</h2>
-        <kpc-series-objectives key="${config.id}"></kpc-series-objectives>
+        <hr />
+        <hr />
 
         ${config.problems?.map((_, index) => (`
           <div style="margin: 3rem 0;">

@@ -110,6 +110,17 @@ code {
 .text-right { text-align: right; }
 .text-left { text-align: left; }
 
+.my-xs { margin: 0.25rem inherit; }
+.my-sm { margin: 0.5rem inherit; }
+.my-md { margin: 1rem inherit; }
+.my-lg { margin: 2rem inherit; }
+.my-xl { margin: 3rem inherit; }
+
+.py-xs { padding: 0.25rem inherit; }
+.py-sm { padding: 0.5rem inherit; }
+.py-md { padding: 1rem inherit; }
+.py-lg { padding: 2rem inherit; }
+.py-xl { padding: 3rem inherit; }
 
 .logo {
   height: 6em;
@@ -124,16 +135,12 @@ code {
 .logo:hover {
   filter: drop-shadow(0 0 2em #afb134aa);
 }
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #2867aaaa);
-}
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 button {

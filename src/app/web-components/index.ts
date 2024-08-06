@@ -1,12 +1,14 @@
+import { ButtonSolid } from "./button/button-solid";
 import { CodeBlock } from "./code-block/code-block";
 import { CopyIcon } from "./copy-icon/copy-icon";
 import { ProblemSet } from "./problem-set/problem-set";
 import { IdBadge } from "./problem-set/web/id-badge";
-import { SeriesFooter } from "./series-footer/series-footer";
-import { SeriesHeading } from "./series-heading/series-heading";
-import { SeriesIntro } from "./series-intro/series-intro";
-import { SeriesNav } from "./series-nav/series-nav";
-import { SeriesObjectives } from "./series-objectives/series-objectives";
+import { SeriesFooter } from "./series/series-footer/series-footer";
+import { SeriesHeading } from "./series/series-heading/series-heading";
+import { SeriesIntro } from "./series/series-intro/series-intro";
+import { SeriesItem } from "./series/series-item";
+import { SeriesNav } from "./series/series-nav/series-nav";
+import { SeriesObjectives } from "./series/series-objectives/series-objectives";
 import { TabLabel } from "./tabs/tab-label";
 import { TabView } from "./tabs/tab-view";
 import { TabsHorizontal } from "./tabs/tabs-horizontal";
@@ -16,6 +18,7 @@ import { WebComponentClass } from "./web-components.config";
 
 const webComponents: WebComponentClass[] = [
   Test,
+  ButtonSolid,
   UnsplashImage,
   CopyIcon,
   CodeBlock,
@@ -24,6 +27,7 @@ const webComponents: WebComponentClass[] = [
   TabView,
   TabsHorizontal,
 
+  SeriesItem,
   SeriesHeading,
   SeriesIntro,
   SeriesNav,  
