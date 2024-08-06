@@ -1,7 +1,7 @@
 import { isNotNullish, Nullable } from "../../utils";
 import { IProblemSet, ISeriesConfigExtended } from "../../series/series.types";
 import { BaseWebComponent } from "../base-web-component";
-import { seriesConfigList } from "../../series";
+import { seriesRepository } from "../../series";
 import { PREFIX } from "../web-components.config";
 
 //helper types
@@ -78,7 +78,7 @@ export class ProblemBaseComponent extends BaseWebComponent {
 
     switch (name) {
       case "series":        
-        const config = seriesConfigList.find(m => m.id === newValue);
+        const config = seriesRepository.find(m => m.id === newValue);
         if (config) {
           this.config = config;
           requiresRefresh = requiresRefresh && (newValue !== oldValue);

@@ -1,4 +1,4 @@
-import { seriesConfigList } from "../series";
+import { seriesRepository } from "../series";
 import { advisorRepo } from "../series/advisor.repo";
 import { AboutView, AdvisorView, ContactView, HomeView, SeriesItemView, SeriesView } from "../views";
 import { IRoute } from "./route.model";
@@ -20,7 +20,7 @@ export const routes: IRoute[] = [
     path: '/series',
     handler: SeriesView
   },
-  ...seriesConfigList.map(c => {
+  ...seriesRepository.list().map(c => {
     return {
       path: c.href.startsWith('.') ? c.href.substring(1) : c.href,  //convert to path
       handler: SeriesItemView(c)

@@ -28,7 +28,9 @@ export type ProblemSetMiniView = (series: ISeriesConfigExtended) => string;
 
 
 export interface IProblemSet extends ICoreInfo {
+  label?: string;                //optional label used in the tab (defaults to title) 
   problem: ProblemSetMiniView; //the view of the problem
   hints: ProblemSetMiniView[];  //hints for the problem
   solution: ProblemSetMiniView; //one solution
+  completed?: Nullable<Date>;   //date problem set was completed
 }

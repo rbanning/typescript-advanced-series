@@ -1,4 +1,4 @@
-import { seriesConfigList } from "../../series";
+import { seriesRepository } from "../../series";
 import { ISeriesConfigExtended } from "../../series/series.types";
 import { Nullable } from "../../utils";
 import { BaseWebComponent } from "../base-web-component";
@@ -41,7 +41,7 @@ export class SeriesNav extends BaseWebComponent {
 
 
   protected buildComponent() {
-    const configs: ISeriesConfigExtended[] = [...seriesConfigList];
+    const configs: ISeriesConfigExtended[] = [...seriesRepository];
       this.reset();
 
       const nav = document.createElement('nav');  

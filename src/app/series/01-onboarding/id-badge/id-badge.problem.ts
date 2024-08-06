@@ -6,7 +6,7 @@ export const idBadgeProblemSet: IProblemSet = {
   ordinal: 1,
   title: "ID Badge",
   subtitle: "Smile - It is time for your ID Badge",
-
+  
   problem: theProblem,
   hints: [hintA, hintB, hintC],
   solution: theSolution,

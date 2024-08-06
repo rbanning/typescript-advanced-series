@@ -1,11 +1,11 @@
 import { IRouteProps } from "../routing/route.model";
-import { seriesConfigList } from "../series";
+import { seriesRepository } from "../series";
 import { ISeriesConfigExtended } from "../series/series.types";
 import { NotFoundView } from "./not-found";
 
 export function SeriesItemView(arg: string | ISeriesConfigExtended) {
   
-  const config = typeof(arg) === 'string' ? seriesConfigList.find(m => m.href = arg) : arg;
+  const config = typeof(arg) === 'string' ? seriesRepository.find(m => m.href === arg) : arg;
   
   return (_props: IRouteProps) => {
     if (config) {
