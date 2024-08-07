@@ -21,7 +21,7 @@ export class SeriesHeading extends SeriesBaseComponent {
 
       const h1 = document.createElement('h1');
       h1.innerHTML = `
-        <span class="${styles.ordinal}">#${this.config.ordinalStr}</span>
+        <span class="${styles.ordinal}">#${this.config.ordinalStr} in the Series</span>
         <span class="${styles.title}">${this.config.title}</span>
       `;
       this.appendChild(h1);

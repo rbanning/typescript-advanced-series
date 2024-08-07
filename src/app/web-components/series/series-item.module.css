@@ -1,3 +1,19 @@
 .series-item {
   display: block;
+
+  .view-container {
+    position: relative;
+
+    .view {
+      transition: opacity 300ms ease-in-out;
+      
+      &.active {
+        opacity: 1;      
+      }
+      &.holding {
+        opacity: 0;;
+      }
+
+    }
+  }
 }

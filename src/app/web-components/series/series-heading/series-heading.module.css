@@ -1,5 +1,17 @@
 .series-heading {
+  position: relative;
   display: block;
+
+  h1 { 
+    position: relative;
+    .ordinal, .title { display: block; text-align: center; }
+    .ordinal {
+      font-size: 1.2rem;
+      font-family: var(--font-mono);
+      font-weight: 900;
+      color: lightslategray;
+    }
+  }
 
   .subtitle {
     margin: 0;
